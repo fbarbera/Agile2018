@@ -16,12 +16,8 @@ function submit() {
     var comentario = document.getElementById('comentarioId');
     var id_comentario = comentario.options[comentario.selectedIndex].value;
 
-    //alert(id_usuario);
-    //alert(id_puerta);
-
-    /*var datos = new Object();
-	datos.listaUsu = usuario;
-	datos.listaPue = puerta;*/
+    alert(id_comentario);
+    
 
 
     var KeyUsu = "";
@@ -29,6 +25,42 @@ function submit() {
 
     var rtaMainUsu = database.ref('reclamos');
     rtaMainUsu.orderByChild("calle").equalTo(id_calle).on('child_added', function (ss) {
+        var rtaMainUsu = ss.val();
+        rtaMainUsu.key = ss.key;
+        KeyUsu = rtaMainUsu.key;
+        //alert(KeyUsu);
+    });
+    rtaMainUsu.orderByChild("entre1").equalTo(id_entre1).on('child_added', function (ss) {
+        var rtaMainUsu = ss.val();
+        rtaMainUsu.key = ss.key;
+        KeyUsu = rtaMainUsu.key;
+        //alert(KeyUsu);
+    });
+    rtaMainUsu.orderByChild("entre2").equalTo(id_entre2).on('child_added', function (ss) {
+        var rtaMainUsu = ss.val();
+        rtaMainUsu.key = ss.key;
+        KeyUsu = rtaMainUsu.key;
+        //alert(KeyUsu);
+    });
+    rtaMainUsu.orderByChild("altura").equalTo(id_altura).on('child_added', function (ss) {
+        var rtaMainUsu = ss.val();
+        rtaMainUsu.key = ss.key;
+        KeyUsu = rtaMainUsu.key;
+        //alert(KeyUsu);
+    });
+    rtaMainUsu.orderByChild("descripcion").equalTo(id_descripcion).on('child_added', function (ss) {
+        var rtaMainUsu = ss.val();
+        rtaMainUsu.key = ss.key;
+        KeyUsu = rtaMainUsu.key;
+        //alert(KeyUsu);
+    });
+    rtaMainUsu.orderByChild("contacto").equalTo(id_contacto).on('child_added', function (ss) {
+        var rtaMainUsu = ss.val();
+        rtaMainUsu.key = ss.key;
+        KeyUsu = rtaMainUsu.key;
+        //alert(KeyUsu);
+    });
+    rtaMainUsu.orderByChild("comentario").equalTo(id_comentario).on('child_added', function (ss) {
         var rtaMainUsu = ss.val();
         rtaMainUsu.key = ss.key;
         KeyUsu = rtaMainUsu.key;
