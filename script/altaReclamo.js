@@ -50,7 +50,8 @@ function save() {
         KeyRec = rtaSaveRec.key;        
     });  
     alert(KeyRec);
-	/*
+    
+    /*
 	if(KeyPue =  KeyRec)
 	{
 		alert("ok");
