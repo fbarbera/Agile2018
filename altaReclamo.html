@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBkOGBViJNyFvH2aW5jdz4I1a1kfnldMwA",
+            authDomain: "agile2018-630af.firebaseapp.com",
+            databaseURL: "https://agile2018-630af.firebaseio.com",
+            projectId: "agile2018-630af",
+            storageBucket: "agile2018-630af.appspot.com",
+            messagingSenderId: "920770926794"
+          };
+          firebase.initializeApp(config);
+        </script>
+    <script type="text/javascript" src="script/altaReclamo.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="stylesheet" media="screen and (max-width: 350px)" type="stylesheet" href="css/styleResponsive.css" />
-    <script type="text/javascript" src="script/altaReclamo.js"></script>
-
 </head>
-
 <body>
     <div id="envelope">
         <form action="" method="post">
@@ -26,22 +36,26 @@
                 <input id="alturaId" name="altura" placeholder="500" type="text" style="width:25%;">
             </div>
             <div>
-                <label>Descripcion</label>
-                <input id="descripcionId" name="email" placeholder="email@gmail.com" type="text">
+                <label>Asunto</label>
+                <select id="asuntoId" name="asunto">
+                    <option>Alumbrado y Luminaria</option> 
+                    <option>Barrido y Limpieza</option>  
+                    <option>Residuos</option>  
+                    <option>Transito</option>  
+                    <option>Transporte</option>   
+                </select>              
             </div>
-            <div> 
+            <div>
                 <label>Numbero de contacto</label>
                 <input id="contactoId" name="contact" placeholder="221500000" type="text">
             </div>
 
             <label>Comentarios</label>
             <textarea id="comentarioId" cols="15" name="message" placeholder="Deje sus comentarios aqui" rows="10">
-
             </textarea>
             <div>
-                <input id="submit" name="submit" type="submit" value="Send Message" onclick="submit()">
+                <input id="submit" name="submit" type="button" value="Send Message" onclick="save()">
         </form>
     </div>
 </body>
-
 </html>

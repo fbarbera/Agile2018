@@ -10,7 +10,7 @@ body {
 margin:0;
 padding:0;
 font-family: 'Roboto Slab', serif;
-background-color:#4697e4;
+
 }
 div#envelope{
 width: 55%;
@@ -44,7 +44,7 @@ padding: 15px;
 border-radius:5px;
 border:1px solid #7ac9b7;
 }
-input[type=submit]
+input[type=submit],input[type=button]
 {
 margin-bottom: 20px;
 width:100%;
@@ -71,4 +71,18 @@ resize:none;
 }
 input[type=text]:focus,textarea:focus {
 border-color: #4697e4;
+}
+select{
+    margin-bottom: 20px;
+margin-top: 10px;
+width:100%;
+padding: 15px;
+border-radius:5px;
+border:1px solid #7ac9b7;
+}
+option{
+width:100%;
+padding: 15px;
+border-radius:5px;
+border:1px solid #7ac9b7;
 }
