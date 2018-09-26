@@ -9,12 +9,21 @@ function save() {
     var asunto = document.getElementById('asuntoId');
     var id_asunto = asunto.options[asunto.selectedIndex].value;
     var contacto = document.getElementById('contactoId').value;    
-    var comentario = document.getElementById('comentarioId');
+    var comentario = document.getElementById('comentarioId').value;
    
     var KeyRec = "";    
 
     var rtaSaveRec = database.ref('reclamos');
-    rtaSaveRec.orderByChild("calle").equalTo(calle).on('child_added', function (ss) {
+    rtaSaveRec.set({
+        calle: calle,
+        entre1:entre1,
+        entre2:entre2,
+        altura:altura,
+        asunto:id_asunto,
+        numeroContacto:contacto,
+        comentario:comentario
+    });
+    /*rtaSaveRec.orderByChild("calle").equalTo(calle).on('child_added', function (ss) {
         var rtaSaveRec = ss.val();
         rtaSaveRec.key = ss.key;
         KeyRec = rtaSaveRec.key;        
@@ -49,7 +58,8 @@ function save() {
         rtaSaveRec.key = ss.key;
         KeyRec = rtaSaveRec.key;        
     });  
-    alert(KeyRec);
+    alert(database.ref('reclamos').);*/
+    
     
     /*
 	if(KeyPue =  KeyRec)
