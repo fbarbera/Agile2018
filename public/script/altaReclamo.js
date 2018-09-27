@@ -1,27 +1,51 @@
 function save() {
- 
-    var database = firebase.database();
 
-    var calle = document.getElementById('calleId').value;   
+    var database = firebase.database();
+    firebase.auth().signInAnonymously().catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+        // ...
+    });
+
+    var calle = document.getElementById('calleId').value;
     var entre1 = document.getElementById('entre1Id').value;
-    var entre2 = document.getElementById('entre2Id').value;    
-    var altura = document.getElementById('alturaId').value;    
+    var entre2 = document.getElementById('entre2Id').value;
+    var altura = document.getElementById('alturaId').value;
     var asunto = document.getElementById('asuntoId');
     var id_asunto = asunto.options[asunto.selectedIndex].value;
-    var contacto = document.getElementById('contactoId').value;    
+    var contacto = document.getElementById('contactoId').value;
     var comentario = document.getElementById('comentarioId').value;
-   
-    var KeyRec = "";    
 
+    var KeyRec = "";
+    var userId = "";
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            var isAnonymous = user.isAnonymous;
+            var uid = user.uid;
+            console.log('uid es: ' + uid);
+            userId = uid;
+            // ...
+        } else {
+            console.log('fallo');
+            // User is signed out.
+            // ...
+        }
+        // ...
+    });
+    console.log('user id que retrona ' + userId);
     var rtaSaveRec = database.ref('reclamos');
-    rtaSaveRec.set({
+    rtaSaveRec.push({
+        userId: userId,
         calle: calle,
-        entre1:entre1,
-        entre2:entre2,
-        altura:altura,
-        asunto:id_asunto,
-        numeroContacto:contacto,
-        comentario:comentario
+        entre1: entre1,
+        entre2: entre2,
+        altura: altura,
+        asunto: id_asunto,
+        numeroContacto: contacto,
+        comentario: comentario
     });
     /*rtaSaveRec.orderByChild("calle").equalTo(calle).on('child_added', function (ss) {
         var rtaSaveRec = ss.val();
@@ -59,8 +83,8 @@ function save() {
         KeyRec = rtaSaveRec.key;        
     });  
     alert(database.ref('reclamos').);*/
-    
-    
+
+
     /*
 	if(KeyPue =  KeyRec)
 	{
