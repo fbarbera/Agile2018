@@ -19,14 +19,25 @@ function save() {
     var comentario = document.getElementById('comentarioId').value;
 
     var KeyRec = "";
-    var userId = "";
+
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             var isAnonymous = user.isAnonymous;
             var uid = user.uid;
             console.log('uid es: ' + uid);
-            userId = uid;
+            
+            var rtaSaveRec = database.ref('reclamos');
+            rtaSaveRec.push({
+                userId: uid,
+                calle: calle,
+                entre1: entre1,
+                entre2: entre2,
+                altura: altura,
+                asunto: id_asunto,
+                numeroContacto: contacto,
+                comentario: comentario
+            });
             // ...
         } else {
             console.log('fallo');
@@ -35,18 +46,8 @@ function save() {
         }
         // ...
     });
-    console.log('user id que retrona ' + userId);
-    var rtaSaveRec = database.ref('reclamos');
-    rtaSaveRec.push({
-        userId: userId,
-        calle: calle,
-        entre1: entre1,
-        entre2: entre2,
-        altura: altura,
-        asunto: id_asunto,
-        numeroContacto: contacto,
-        comentario: comentario
-    });
+
+
     /*rtaSaveRec.orderByChild("calle").equalTo(calle).on('child_added', function (ss) {
         var rtaSaveRec = ss.val();
         rtaSaveRec.key = ss.key;

@@ -86,3 +86,17 @@ padding: 15px;
 border-radius:5px;
 border:1px solid #7ac9b7;
 }
+
+a
+{
+margin: 40px 50px 10px 40px;
+width: 80%;
+padding: 15px;
+border-radius:5px;
+border:1px solid #7ac9b7;
+background-color: #4180C5;
+color: aliceblue;
+font-size:15px;
+cursor:pointer;
+float: left;
+}
