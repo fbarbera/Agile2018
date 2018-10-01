@@ -2,22 +2,59 @@
 <html>
 
 <head>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Plata Reclama</title>
     <script type="text/javascript" src="script/altaReclamo.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="stylesheet" media="screen and (max-width: 350px)" type="stylesheet" href="css/styleResponsive.css" />
+    <link rel="stylesheet" type="stylesheet" href="css\form-validation.css" />
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
 </head>
 
 <body>
     <div id="envelope">
-        <header>
-            <h2>La Plata Reclama</h2>
-        </header>
-        <div>
-            <a id="generarId" href="file:///C:/Users/facundo.barbera/Desktop/Agile2018/public/index.html">Generar Reclamo</a>
-        </div>
-        <div>
-            <a id="misReclamosId" href="#">Mis reclamos</a>
+        <div class="wrapper">
+            <h1>La Plata Reclama</h1>
+            <p>Seleccione el tipo</p>
+            <div class="tab blue">
+                <input id="tab-four" type="radio" name="tabs2">
+                <label for="tab-four">Luminaria</label>
+                <div class="tab-content">
+                    <a class="elemento">Falta de Luminaria</a>
+                    <a class="elemento">Luminaria Rota</a>
+                </div>
+            </div>
+            <div class="tab blue">
+                <input id="tab-five" type="radio" name="tabs2">
+                <label for="tab-five">Label Two</label>
+                <div class="tab-content">
+                        <a class="elemento">Alta de Luminaria</a>
+                        <a class="elemento">Luminaria Rota</a>
+                        <a class="elemento">Falta de Luminaria</a>
+                        <a class="elemento">Luminaria Rota</a>
+                </div>
+            </div>
+            <div class="tab blue">
+                <input id="tab-six" type="radio" name="tabs2">
+                <label for="tab-six">Label Three</label>
+                <div class="tab-content">
+                        <a class="elemento">Falta de Luminaria</a>
+                        <a class="elemento">Luminaria Rota</a>
+                        <a class="elemento">Falta de Luminaria</a>
+                        <a class="elemento">Luminaria Rota</a>
+                        <a class="elemento">Falta de Luminaria</a>
+                        <a class="elemento">Luminaria Rota</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

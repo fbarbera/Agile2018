@@ -1,0 +1,14 @@
+Pantalla para alta reclamos
+1. Asunto y subasuntos (seccionar)
+2. Ubicacion (por gps o manual)
+3. Adjuntar imagen (o sacar foto)
+4. Contacto del usuario.
+5. Confirmacion con Nro Reclamo generada
+
+Una vez que se llega la confirmacion, se envian los datos a FireBase
+
+
+
+Mostrar en el mapa los reclamos cargados para un tipo de reclamos seleccionado
+
+Si es de alumbrado publico, que muestre un campo para un num de palo (no requerido)

@@ -1,0 +1,8 @@
+Maquina de estados para el usuario
+
+Cargado, en proceso, finalizado (o cancelado, con motivo)
+
+si otra persona sube el mismo reclamo
+Se crea en estado cargdo, se procesa, y hereda el estado del 1er reclamo
+
+Maquina de estados
