@@ -1,0 +1,53 @@
+body {
+  background: #c1bdba;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.container {
+  background: rgba(19, 35, 47, 0.9);
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+h3 {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 400;
+  margin: 0 0 40px;
+}
+
+.comentarios{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+    
+.nav-pills .nav-link.active, .nav-pills .show .nav-link {
+    
+    color: #fff;
+    background-color: #3D8AC4;
+}
+.nav-link:hover, {
+  background: #3D8AC4;
+}
+
+a:hover {
+  color: #FFFFFF;
+}
+a {
+  color:#9C9B9D}
+
+.nav-link:hover {
+  background: #3D8AC4;
+}
+
+
+}
+.btn-primary{
+    color: #fff;
+    background-color: #3D8AC4;
+    border-color: #3D8AC4; 
+}
+
