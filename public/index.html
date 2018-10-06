@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Plata Reclama</title>
-    <script type="text/javascript" src="script/altaReclamo.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="stylesheet" media="screen and (max-width: 350px)" type="stylesheet" href="css/styleResponsive.css" />
-    <link rel="stylesheet" type="stylesheet" href="css/form-validation.css" />
-    <!-- update the version number as needed -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.js" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.js" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.min.js" />
+    <link rel="stylesheet" type="text/css" href="css/index2.css" />
+    
+    <script type="text/javascript" src="js/jQuery.min.js">  </script>
+    <script type="text/javascript" src="js/js.js"></script>
+    
     <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
@@ -18,55 +24,83 @@
     <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
-
+    
 
 </head>
-
 <body>
-    <div id="envelope">
-        <form action="" method="post">
-            <header>
-                <h2>Enviar Reclamo</h2>
-                <p>Complete los campos para que su reclamos sea enviado al centro de reclamos de la Municipalidad</p>
-            </header>
-            <div>
-                <label>Calle</label>
-                <input id="calleId" name="calle" placeholder="7" type="text" style="width:25%;">
-                <label> Entre </label>
-                <input id="entre1Id" name="entre" placeholder="49" type="text" style="width:25%;">
-                <label> y </label>
-                <input id="entre2Id" name="entre" placeholder="50" type="text" style="width:25%;">
-                <label>Altura</label>
-                <input id="alturaId" name="altura" placeholder="500" type="text" style="width:25%;">
-            </div>
-            <div>
-                <label>Asunto</label>
-                <select id="asuntoId" name="asunto">
-                    <option>Alumbrado y Luminaria</option> 
-                    <option>Barrido y Limpieza</option>  
-                    <option>Residuos</option>  
-                    <option>Transito</option>  
-                    <option>Transporte</option>   
-                </select>
-            </div>
-            <div>
-                <label>Numbero de contacto</label>
-                <input id="contactoId" name="contact" placeholder="221500000" type="text">
-            </div>
-            <div>
-                <label>Comentarios</label>
-                <textarea id="comentarioId" cols="15" name="message" placeholder="Deje sus comentarios aqui" rows="10">
-            </textarea>
-            </div>
-            <div>
-                <input id="submit" name="submit" type="button" value="Send Message" onclick="save()">
 
-                <div>
-                    <a id="generarId" href="file:///d:/Agile2018/public/main.html">Menu</a>
+<form>
+
+    <div class="container">
+      <div>
+         
+          <nav class="nav nav-pills form-row text-center mb-3">
+            <a class="nav-item nav-link col active" href="#">Generar Reclamo</a>
+            <a class="nav-item nav-link col" href="buscar.html">Buscar Reclamo</a>
+            <a class="nav-item nav-link col" href="login.html">Cerrar Sesión</a>
+          </nav>
+        
+         <!-- <h3>Generar reclamo</h3> -->
+        <div class="form-row mb-3">
+            <select name="Tipo Reclamo" class="custom-select-sm">
+              <option selected>Seleccione Categoría</option>
+              <option value="Alumbrado y Luminaria">Alumbrado y Luminaria</option>
+              <option value="Residuos">Resudios</option>
+              <option value="Transito">Tránsito</option>
+              <option value="Bacheo">Bacheo</option>
+            </select>
+          </div>
+          
+          <div class="form-row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Calle</span>
                 </div>
+              <input type="text" class="form-control" id="validationServer01" placeholder="ej diag74"  required>
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Entre</span>
+                </div>
+              <input type="text" class="form-control" placeholder="ej 9">
+                <div class="input-group-prepend">
+                 <span class="input-group-text">Y</span>
+                </div>
+              <input type="text" class="form-control" placeholder="ej 46">
             </div>
-        </form>
-    </div>
-</body>
+            
+          </div>
 
+          <div class="form-row mb-3">
+            
+            <div class="input-group mb-3">
+
+               <div class="input-group-prepend mb-3">
+                  <span class="input-group-text">Altura</span>
+                </div>
+                  <input type="text" class="form-control" id="validationServer03" placeholder="Altura" required>
+            
+
+
+              <div class="offset-md-2">
+              <input type="text" class="form-control" id="validationServer04" placeholder="Tel Contacto" required>
+              </div>
+                
+            
+          </div>
+          
+                  <div class="form-group col-12" style=" padding-right: 0px;
+                     padding-left: 0px">
+                    <textarea class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
+                  </div>
+          
+      <div class="form-row">
+        <div class="col left">
+        <button type="button" class="btn btn-danger cancel" onclick="login.html">Cancelar</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary">Enviar</button>
+      </div>
+      </div>
+    </form>
+    
+</body>
 </html>

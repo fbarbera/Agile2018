@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Plata Reclama</title>
+    <script type="text/javascript" src="script/altaReclamo.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" media="screen and (max-width: 350px)" type="stylesheet" href="css/styleResponsive.css" />
+    <link rel="stylesheet" type="stylesheet" href="css/form-validation.css" />
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+    <div id="envelope">
+        <form action="" method="post">
+            <header>
+                <h2>Enviar Reclamo</h2>
+                <p>Complete los campos para que su reclamos sea enviado al centro de reclamos de la Municipalidad</p>
+            </header>
+            <div>
+                <label>Calle</label>
+                <input id="calleId" name="calle" placeholder="7" type="text" style="width:25%;">
+                <label> Entre </label>
+                <input id="entre1Id" name="entre" placeholder="49" type="text" style="width:25%;">
+                <label> y </label>
+                <input id="entre2Id" name="entre" placeholder="50" type="text" style="width:25%;">
+                <label>Altura</label>
+                <input id="alturaId" name="altura" placeholder="500" type="text" style="width:25%;">
+            </div>
+            <div>
+                <label>Asunto</label>
+                <select id="asuntoId" name="asunto">
+                    <option>Alumbrado y Luminaria</option> 
+                    <option>Barrido y Limpieza</option>  
+                    <option>Residuos</option>  
+                    <option>Transito</option>  
+                    <option>Transporte</option>   
+                </select>
+            </div>
+            <div>
+                <label>Numbero de contacto</label>
+                <input id="contactoId" name="contact" placeholder="221500000" type="text">
+            </div>
+            <div>
+                <label>Comentarios</label>
+                <textarea id="comentarioId" cols="15" name="message" placeholder="Deje sus comentarios aqui" rows="10">
+            </textarea>
+            </div>
+            <div>
+                <input id="submit" name="submit" type="button" value="Send Message" onclick="save()">
+
+                <div>
+                    <a id="generarId" href="file:///d:/Agile2018/public/main.html">Menu</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
