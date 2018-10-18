@@ -24,6 +24,7 @@
     <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+    <script type="text/javascript" src="script/altaReclamo.js"></script>
     
 
 </head>
@@ -42,7 +43,7 @@
         
          <!-- <h3>Generar reclamo</h3> -->
         <div class="form-row mb-3">
-            <select name="Tipo Reclamo" class="custom-select-sm">
+            <select id="categoriaId" name="Tipo Reclamo" class="custom-select-sm">
               <option selected>Seleccione Categoría</option>
               <option value="Alumbrado y Luminaria">Alumbrado y Luminaria</option>
               <option value="Residuos">Resudios</option>
@@ -50,21 +51,21 @@
               <option value="Bacheo">Bacheo</option>
             </select>
           </div>
-          
+          <input id="claveId" hidden >
           <div class="form-row">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">Calle</span>
+                  <span class="input-group-text" >Calle</span>
                 </div>
-              <input type="text" class="form-control" id="validationServer01" placeholder="ej diag74"  required>
+              <input id="calleId" type="text" class="form-control" id="validationServer01" placeholder="ej diag74"  required>
               <div class="input-group-prepend">
-                  <span class="input-group-text">Entre</span>
+                  <span class="input-group-text" >Entre</span>
                 </div>
-              <input type="text" class="form-control" placeholder="ej 9">
+              <input type="text" class="form-control" placeholder="ej 9" id="entre1Id">
                 <div class="input-group-prepend">
                  <span class="input-group-text">Y</span>
                 </div>
-              <input type="text" class="form-control" placeholder="ej 46">
+              <input id="entre2Id" type="text" class="form-control" placeholder="ej 46">
             </div>
             
           </div>
@@ -76,12 +77,12 @@
                <div class="input-group-prepend mb-3">
                   <span class="input-group-text">Altura</span>
                 </div>
-                  <input type="text" class="form-control" id="validationServer03" placeholder="Altura" required>
+                  <input id="alturaId" type="text" class="form-control" id="validationServer03" placeholder="Altura" required>
             
 
 
               <div class="offset-md-2">
-              <input type="text" class="form-control" id="validationServer04" placeholder="Tel Contacto" required>
+              <input id="contactoId" type="text" class="form-control" id="validationServer04" placeholder="Tel Contacto" required>
               </div>
                 
             
@@ -89,7 +90,7 @@
           
                   <div class="form-group col-12" style=" padding-right: 0px;
                      padding-left: 0px">
-                    <textarea class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
+                    <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
                   </div>
           
       <div class="form-row">
@@ -97,7 +98,7 @@
         <button type="button" class="btn btn-danger cancel" onclick="login.html">Cancelar</button>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary">Enviar</button>
+        <button type="button" class="btn btn-primary" onclick="save()">Enviar</button>
       </div>
       </div>
     </form>

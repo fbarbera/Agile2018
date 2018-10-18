@@ -13,40 +13,43 @@ function save() {
     var entre1 = document.getElementById('entre1Id').value;
     var entre2 = document.getElementById('entre2Id').value;
     var altura = document.getElementById('alturaId').value;
-    var asunto = document.getElementById('asuntoId');
-    var id_asunto = asunto.options[asunto.selectedIndex].value;
+    var categoria = document.getElementById('categoriaId');
+    var id_categoria = categoria.options[categoria.selectedIndex].value;
     var contacto = document.getElementById('contactoId').value;
     var comentario = document.getElementById('comentarioId').value;
+    var clave = document.getElementById("claveId");
 
     var KeyRec = "";
-
-    firebase.auth().onAuthStateChanged(function (user) {
+    var Key =  firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             var isAnonymous = user.isAnonymous;
             var uid = user.uid;
             console.log('uid es: ' + uid);
-            
+            fecha = new Date();
             var rtaSaveRec = database.ref('reclamos');
-            rtaSaveRec.push({
+            var rtaSaveRecKey = rtaSaveRec.push({
                 userId: uid,
                 calle: calle,
                 entre1: entre1,
                 entre2: entre2,
                 altura: altura,
-                asunto: id_asunto,
+                categoria: id_categoria,
                 numeroContacto: contacto,
-                comentario: comentario
-            });
+                comentario: comentario,
+                fechaCreacion: fecha.toString().split(" (")[0]
+            }).key;
             // ...
+
         } else {
             console.log('fallo');
             // User is signed out.
             // ...
         }
-        // ...
-    });
+        return rtaSaveRecKey;
 
+    });
+    clave.value=Key;
 
     /*rtaSaveRec.orderByChild("calle").equalTo(calle).on('child_added', function (ss) {
         var rtaSaveRec = ss.val();
