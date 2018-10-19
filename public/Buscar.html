@@ -24,6 +24,7 @@
     <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+    <script defer src="script/misReclamos.js"></script>
     
 
 </head>
@@ -36,14 +37,15 @@
          
           <nav class="nav nav-pills form-row text-center mb-3">
             <a class="nav-item nav-link col" href="index2.html">Generar Reclamo</a>
-            <a class="nav-item nav-link col active" href="#">Buscar Reclamo</a>
+            <a class="nav-item nav-link col active" href="#">Mis Reclamos</a>
             <a class="nav-item nav-link col" href="login.html">Cerrar Sesión</a>
           </nav>
         
         <nav class="navbar navbar-expand-sm navbar-dark">
             <form class="form-row" action="/action_page.php">
-              <input class="form-control mr-sm-2" type="text" placeholder="Numero Reclamo">
-               <button class="btn btn-primary" type="submit">Buscar</button>
+                <select id="reclamosId" name="mis Reclamo" class="custom-select-sm">
+                    <option selected>Seleccione un Reclamo</option>                    
+                  </select>
             </form>
         </nav>
           

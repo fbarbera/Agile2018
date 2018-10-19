@@ -19,16 +19,17 @@ function save() {
     var comentario = document.getElementById('comentarioId').value;
     var clave = document.getElementById("claveId");
 
-    var KeyRec = "";
-    var Key =  firebase.auth().onAuthStateChanged(function (user) {
+
+    var KeyRec;
+    firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-            console.log('uid es: ' + uid);
+            var uid = user.uid;            
             fecha = new Date();
             var rtaSaveRec = database.ref('reclamos');
-            var rtaSaveRecKey = rtaSaveRec.push({
+            var rtaSaveRecKey = rtaSaveRec.push()
+            rtaSaveRecKey.set({
                 userId: uid,
                 calle: calle,
                 entre1: entre1,
@@ -38,7 +39,7 @@ function save() {
                 numeroContacto: contacto,
                 comentario: comentario,
                 fechaCreacion: fecha.toString().split(" (")[0]
-            }).key;
+            })
             // ...
 
         } else {
@@ -46,10 +47,11 @@ function save() {
             // User is signed out.
             // ...
         }
-        return rtaSaveRecKey;
+        KeyRec = rtaSaveRecKey.key;
 
     });
-    clave.value=Key;
+    clave.hidden = false;
+    clave.value = KeyRec;
 
     /*rtaSaveRec.orderByChild("calle").equalTo(calle).on('child_added', function (ss) {
         var rtaSaveRec = ss.val();
