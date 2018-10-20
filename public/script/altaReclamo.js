@@ -19,11 +19,12 @@ function save() {
     var comentario = document.getElementById('comentarioId').value;
     var clave = document.getElementById("claveId");
 
-
     var KeyRec;
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            // User is signed in.
+        if (user) { 
+            var count = database.ref('reclamos');
+            count.once('value', function(snapshot) { 
+            var cuenta = snapshot.numChildren(); 
             var isAnonymous = user.isAnonymous;
             var uid = user.uid;            
             fecha = new Date();
@@ -38,9 +39,12 @@ function save() {
                 categoria: id_categoria,
                 numeroContacto: contacto,
                 comentario: comentario,
-                fechaCreacion: fecha.toString().split(" (")[0]
+                fechaCreacion: fecha.toString().split(" (")[0],
+                nroReclamo:cuenta,
+                estado: 'ingresado'
             })
-            // ...
+            });
+            //fin count 
 
         } else {
             console.log('fallo');
