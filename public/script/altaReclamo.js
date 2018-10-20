@@ -21,28 +21,33 @@ function save() {
 
     var KeyRec;
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) { 
+        if (user) {
+            //count de la coleccion
             var count = database.ref('reclamos');
-            count.once('value', function(snapshot) { 
-            var cuenta = snapshot.numChildren(); 
-            var isAnonymous = user.isAnonymous;
-            var uid = user.uid;            
-            fecha = new Date();
-            var rtaSaveRec = database.ref('reclamos');
-            var rtaSaveRecKey = rtaSaveRec.push()
-            rtaSaveRecKey.set({
-                userId: uid,
-                calle: calle,
-                entre1: entre1,
-                entre2: entre2,
-                altura: altura,
-                categoria: id_categoria,
-                numeroContacto: contacto,
-                comentario: comentario,
-                fechaCreacion: fecha.toString().split(" (")[0],
-                nroReclamo:cuenta,
-                estado: 'ingresado'
-            })
+            count.once('value', function (snapshot) {
+                var cuenta = snapshot.numChildren();
+                //le sumo uno a la coleccion
+                cuenta++;
+                //fin count de la coleccion
+                var isAnonymous = user.isAnonymous;
+                var uid = user.uid;
+                fecha = new Date();
+                var rtaSaveRec = database.ref('reclamos');
+                var rtaSaveRecKey = rtaSaveRec.push()
+                rtaSaveRecKey.set({
+                    userId: uid,
+                    calle: calle,
+                    entre1: entre1,
+                    entre2: entre2,
+                    altura: altura,
+                    categoria: id_categoria,
+                    numeroContacto: contacto,
+                    comentario: comentario,
+                    fechaCreacion: fecha.toString().split(" (")[0],
+                    nroReclamo: cuenta,
+                    estado: 'ingresado'
+                })
+                
             });
             //fin count 
 
@@ -51,11 +56,11 @@ function save() {
             // User is signed out.
             // ...
         }
-        KeyRec = rtaSaveRecKey.key;
+        //KeyRec = rtaSaveRecKey.key;
 
     });
-    clave.hidden = false;
-    clave.value = KeyRec;
+    //clave.hidden = false;
+    //clave.value = KeyRec;
 
     /*rtaSaveRec.orderByChild("calle").equalTo(calle).on('child_added', function (ss) {
         var rtaSaveRec = ss.val();
