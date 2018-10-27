@@ -43,7 +43,7 @@ function save() {
                     categoria: id_categoria,
                     numeroContacto: contacto,
                     comentario: comentario,
-                    fechaCreacion: fecha.toString().split(" (")[0],
+                    fechaCreacion: fecha.toLocaleString(),
                     nroReclamo: cuenta,
                     estado: 'ingresado'
                 })
