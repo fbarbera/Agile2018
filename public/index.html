@@ -1,107 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.css" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.min.css" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.css" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.min.css" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.min.js" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.js" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.js" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.min.js" />
-    <link rel="stylesheet" type="text/css" href="css/index2.css" />
-    
-    <script type="text/javascript" src="js/jQuery.min.js">  </script>
-    <script type="text/javascript" src="js/js.js"></script>
-    
-    <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.5.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.5.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-    <script type="text/javascript" src="script/altaReclamo.js"></script>
-    
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="css/styleResponsive.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.min.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.min.css" />
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.min.js"> </script>
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.js" ></script>
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.js" ></script>
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.min.js"> </script>
+        <script type="text/javascript" src="js/jQuery.min.js">  </script>
+        <script type="text/javascript" src="js/js.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-database.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-messaging.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
+        <script defer src="/__/firebase/init.js"></script>
+        <script type="text/javascript" src="script/altaReclamo.js"></script>
+    </head>
+    <body>
+    <div class="container"style="background-color: #c1bdba">
+      <section style="background-color: rgba(19, 35, 47, 0.9)" class="widget widget_blog_subscription option-b">
+        <form >
+             <h3 style="text-align:center; color:white">Generar reclamo</h3>
+             <hr style="color:white" />
 
-</head>
-<body>
+            <nav class="nav nav-pills form-row text-center mb-3">
+                <a class="nav-item nav-link col active" href="indexResponsive.html">Generar Reclamo</a>
+                <a class="nav-item nav-link col" href="buscar.html">Mis Reclamos</a>
+                <a class="nav-item nav-link col" href="login.html">Cerrar Sesión</a>
+            </nav>
 
-<form>
-
-    <div class="container">
-      <div>
-         
-          <nav class="nav nav-pills form-row text-center mb-3">
-            <a class="nav-item nav-link col active" href="#">Generar Reclamo</a>
-            <a class="nav-item nav-link col" href="buscar.html">Mis Reclamos</a>
-            <a class="nav-item nav-link col" href="login.html">Cerrar Sesión</a>
-          </nav>
-        
-         <!-- <h3>Generar reclamo</h3> -->
-        <div class="form-row mb-3">
-            <select id="categoriaId" name="Tipo Reclamo" class="custom-select-sm">
-              <option selected>Seleccione Categoría</option>
-              <option value="Alumbrado y Luminaria">Alumbrado y Luminaria</option>
-              <option value="Residuos">Resudios</option>
-              <option value="Transito">Tránsito</option>
-              <option value="Bacheo">Bacheo</option>
-            </select>
-          </div>
-          <input id="claveId" hidden >
-          <div class="form-row">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" >Calle</span>
-                </div>
-              <input id="calleId" type="text" class="form-control" id="validationServer01" placeholder="ej diag74"  required>
-              <div class="input-group-prepend">
-                  <span class="input-group-text" >Entre</span>
-                </div>
-              <input type="text" class="form-control" placeholder="ej 9" id="entre1Id">
-                <div class="input-group-prepend">
-                 <span class="input-group-text">Y</span>
-                </div>
-              <input id="entre2Id" type="text" class="form-control" placeholder="ej 46">
+            <div class="form-group">
+                <select id="categoriaId" name="Tipo Reclamo" class="browser-default custom-select">
+                    <option selected>Seleccione Categoría</option>
+                    <option value="Alumbrado y Luminaria">Alumbrado y Luminaria</option>
+                    <option value="Residuos">Resudios</option>
+                    <option value="Transito">Tránsito</option>
+                    <option value="Bacheo">Bacheo</option>
+                </select>                  
             </div>
-            
-          </div>
 
-          <div class="form-row mb-3">
-            
-            <div class="input-group mb-3">
+            <div class="form-group">
+                <input type="text" class="form-control" id="validationServer01" aria-describedby="emailHelp" placeholder="Ingrese Calle">
+            </div>
 
-               <div class="input-group-prepend mb-3">
-                  <span class="input-group-text">Altura</span>
+            <div class="form-group">
+                 <input type="text" class="form-control" placeholder="Ingrese Entre" id="entre1Id" aria-describedby="emailHelp">
+            </div>
+
+            <div class="form-group">
+                 <input type="text" class="form-control" placeholder="Ingrese Y" id="entre1Id" aria-describedby="emailHelp">
+            </div>
+
+            <div class="form-group">
+                 <input id="alturaId" type="text" class="form-control" id="validationServer03" aria-describedby="emailHelp" placeholder="Ingrese Altura">
+            </div>
+
+            <div class="form-group">
+                <input id="contactoId" type="text" class="form-control" id="validationServer04" placeholder="Telefono Contacto" required>
+            </div>
+
+            <div class="form-group">
+                 <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
+            </div>
+
+            <div class="form-group" style="float: right">
+                <div class="btn-group btn-group-justified">
+                    <button type="button" class="btn btn-danger cancel" onclick="login.html">Cancelar
+                </div>        
+                <div class="btn-group btn-group-justified">
+                    <button type="button" class="btn btn-primary" onclick="save()">Enviar</button>  
                 </div>
-                  <input id="alturaId" type="text" class="form-control" id="validationServer03" placeholder="Altura" required>
-            
+            </div>
 
-
-              <div class="offset-md-2">
-              <input id="contactoId" type="text" class="form-control" id="validationServer04" placeholder="Tel Contacto" required>
-              </div>
-                
-            
-          </div>
-          
-                  <div class="form-group col-12" style=" padding-right: 0px;
-                     padding-left: 0px">
-                    <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
-                  </div>
-          
-      <div class="form-row">
-        <div class="col left">
-        <button type="button" class="btn btn-danger cancel" onclick="login.html">Cancelar</button>
-      </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary" onclick="save()">Enviar</button>
-      </div>
-      </div>
-    </form>
-    
-</body>
+        </form>
+        </section>
+    </div>
+    </body>
 </html>
