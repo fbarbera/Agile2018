@@ -1,8 +1,8 @@
+
+
 var selectReclamos = document.getElementById("reclamosId");
 //selectReclamos.onclick=irAlReclamo(selectReclamos.options[selectReclamos.selectedIndex].value);
 obtenerReclamos();
-
-
 
 function obtenerReclamos() {
   var database = firebase.database();
@@ -29,15 +29,16 @@ function obtenerReclamos() {
         var reclamosCol = ss.val();
         reclamosCol.key = ss.key;
         var reclamosArray = [];
-        reclamosArray.splice(0, reclamosArray.length, { 
-          categoria: reclamosCol.categoria, 
-          nroReclamo: reclamosCol.nroReclamo, 
-          estado: reclamosCol.estado });
+        reclamosArray.splice(0, reclamosArray.length, {
+          categoria: reclamosCol.categoria,
+          nroReclamo: reclamosCol.nroReclamo,
+          estado: reclamosCol.estado
+        });
         KeyRec = reclamosCol.key;
         for (i in reclamosArray) {
           var optionRec = document.createElement("option");
           optionRec.value = reclamosArray[i].nroReclamo;
-          optionRec.text =  ' Reclamo numero: ' + reclamosArray[i].nroReclamo + ' - Estado: ' + reclamosArray[i].estado;
+          optionRec.text = 'Reclamo numero: ' + reclamosArray[i].nroReclamo + ' - Estado: ' + reclamosArray[i].estado +' - Categoria: '+ reclamosArray[i].categoria;
           selectReclamos.appendChild(optionRec);
         }
       });
@@ -49,8 +50,29 @@ function obtenerReclamos() {
   //console.log(datos);
 }
 
+/*var app = new Vue({
+  el: '#app',
+  data: {
+      selected: '',
+      options:[]
+  }
+})*/
 
 selectReclamos.addEventListener('change', function () {
-  var index = selectReclamos.value;
-  console.log(index);
+  var reclamo = selectReclamos;
+  console.log(reclamo);
+  buscarReclamo(reclamo);
 })
+
+
+function buscarReclamo(reclamo) {
+  var detalleId = document.getElementById("detalle");
+  var nroReclamoInput = document.getElementById("nroReclamoId");
+  var estadoShow = document.getElementById("estadoId");
+  var categoriaShow = document.getElementById("categoriaId");
+detalleId.hidden=false;
+nroReclamoInput.value=reclamo.value;
+estadoShow.value=reclamo.selectedOptions[0].innerText.split('Estado:',2)[1].split('-',2)[0];
+categoriaShow.value=reclamo.selectedOptions[0].innerText.split('Categoria:',2)[1];;
+ 
+}
