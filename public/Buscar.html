@@ -1,72 +1,78 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styleResponsive.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.min.css" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.min.js" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.js" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.js" />
-    <link rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.min.js" />
-    <link rel="stylesheet" type="text/css" href="css/index2.css" />
+    <link rel="stylesheet" type="text/css" href="css/Login.css" />
+    <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.min.js">
+    </script>
+    <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.js" >       </script>
+    <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.js" ></script>
+    <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="css/buscar.css" />
     <script type="text/javascript" src="js/jQuery.min.js"></script>
     <script type="text/javascript" src="js/js.js"></script>
-
     <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
     <script defer src="/__/firebase/5.5.1/firebase-database.js"></script>
     <script defer src="/__/firebase/5.5.1/firebase-messaging.js"></script>
     <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <script defer src="script/misReclamos.js"></script>
-
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script language=javascript></script>
 </head>
-
+<!--<body style="background-color:#c1bdba;">
+    <div class="container" style="background-color: #c1bdba">
+        <section style="background-color: rgba(19, 35, 47, 0.9)" class="widget widget_blog_subscription option-b">-->
 <body>
-    <form>
-        <h3 style="text-align:center; color:white">Mis Reclamos</h3>
-        <hr style="color:white" />
-        <div class="container">
-            <div id="app">
-                <nav class="nav nav-pills form-row text-center mb-3">
-                    <a class="nav-item nav-link col" href="index.html">Generar Reclamo</a>
-                    <a class="nav-item nav-link col active" href="#">Mis Reclamos</a>
-                    <a class="nav-item nav-link col" href="login.html">Cerrar Sesión</a>
-                </nav>
-
-                <nav class="navbar navbar-expand-sm navbar-dark">
-                    <form class="form-row" action="/action_page.php">
-                        <select id="reclamosId" v-model="selected" name="mis Reclamos" class="custom-select-sm" style="width:100%; font-size:inherit">
-                    <option selected disabled>Seleccione un Reclamo</option>                    
-                  </select>
-
-
-                    </form>
-
-                </nav>
-
-                <div id="detalle" hidden>
+    <div class="container widget widget_blog_subscription option-b" style="background-color: rgba(19, 35, 47, 0.9)">
+        <form>
+            <h3 style="text-align:center; color:white">Mis Reclamos</h3>
+            <hr style="color:white" />
+            <div class="container">
+                <div id="app">
+                    <nav class="nav nav-pills form-row text-center mb-3">
+                        <a class="nav-item nav-link col" href="index.html">Generar Reclamo</a>
+                        <a class="nav-item nav-link col active" href="#">Mis Reclamos</a>
+                        <a class="nav-item nav-link col" href="login.html">Cerrar Sesión</a>
+                    </nav>                    
                     <div class="form-group">
-                        <label style="color:white; font-size:inherit">Reclamo numero</label>
-                        <input type="text" class="form-control" id="nroReclamoId" aria-describedby="emailHelp" disabled>
-                        <label style="color:white; font-size:inherit">Estado</label>
-                        <input type="text" class="form-control" id="estadoId" aria-describedby="emailHelp" disabled>
-                        <label style="color:white; font-size:inherit">Categoria</label>
-                        <input type="text" class="form-control" id="categoriaId" aria-describedby="emailHelp" disabled>
+                        <select id="reclamosId" v-model="selected" name="mis Reclamos" class="browser-default custom-select" style="width:100%; font-size:inherit">
+                        <option selected disabled>Seleccione un Reclamo</option>
+                        </select>
                     </div>
+                <div id="detalle">
+                    <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                        <label for="nroReclamoId" class="col-lg-3 control-label">Reclamo numero</label>
+                        <div class="col-lg-10">
+                          <input type="email" class="form-control" id="nroReclamoId" readonly>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="estadoId" class="col-lg-2 control-label">Estado</label>
+                        <div class="col-lg-10">
+                          <input type="email" class="form-control" id="estadoId" readonly>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="categoriaId" class="col-lg-2 control-label">Categoria</label>
+                        <div class="col-lg-10">
+                          <input type="email" class="form-control" id="categoriaId" readonly>
+                        </div>
+                      </div>
+                    </form>
                 </div>
+                </div>    
             </div>
-        </div>
+        </form>    
+    </div>    
 </body>
-
 </html>

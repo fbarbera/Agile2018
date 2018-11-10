@@ -9,8 +9,10 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.css" />
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.min.css" />
-        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.min.js"> </script>
-        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.js" ></script>
+        <link rel="stylesheet" type="text/css" href="css/Login.css" />
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.min.js">
+        </script>
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.js" >       </script>
         <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.js" ></script>
         <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.min.js"> </script>
         <script type="text/javascript" src="js/jQuery.min.js">  </script>
@@ -22,63 +24,70 @@
         <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
         <script defer src="/__/firebase/init.js"></script>
         <script type="text/javascript" src="script/altaReclamo.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script language=javascript></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
+    <!--<body style="background-color:#c1bdba;">-->
     <body>
-    <div class="container"style="background-color: #c1bdba">
-      <section style="background-color: rgba(19, 35, 47, 0.9)" class="widget widget_blog_subscription option-b">
+    <!--<div class="container"style="background-color: #c1bdba">
+      <section style="background-color: rgba(19, 35, 47, 0.9)" class="widget widget_blog_subscription option-b">-->
+    <div class="container widget widget_blog_subscription option-b" style="background-color: rgba(19, 35, 47, 0.9)">
         <form >
              <h3 style="text-align:center; color:white">Generar reclamo</h3>
              <hr style="color:white" />
 
             <nav class="nav nav-pills form-row text-center mb-3">
-                <a class="nav-item nav-link col active" href="indexResponsive.html">Generar Reclamo</a>
+                <a class="nav-item nav-link col active" href="index.html">Generar Reclamo</a>
                 <a class="nav-item nav-link col" href="buscar.html">Mis Reclamos</a>
                 <a class="nav-item nav-link col" href="login.html">Cerrar Sesión</a>
             </nav>
-
-            <div class="form-group">
-                <select id="categoriaId" name="Tipo Reclamo" class="browser-default custom-select">
-                    <option selected>Seleccione Categoría</option>
-                    <option value="Alumbrado y Luminaria">Alumbrado y Luminaria</option>
-                    <option value="Residuos">Resudios</option>
-                    <option value="Transito">Tránsito</option>
-                    <option value="Bacheo">Bacheo</option>
-                </select>                  
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" id="calleId" aria-describedby="emailHelp" placeholder="Ingrese Calle">
-            </div>
-
-            <div class="form-group">
-                 <input type="text" class="form-control" placeholder="Ingrese Entre" id="entre1Id" aria-describedby="emailHelp">
-            </div>
-
-            <div class="form-group">
-                 <input type="text" class="form-control" placeholder="Ingrese Y" id="entre2Id" aria-describedby="emailHelp">
-            </div>
-
-            <div class="form-group">
-                 <input id="alturaId" type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Ingrese Altura">
-            </div>
-
-            <div class="form-group">
-                <input id="contactoId" type="text" class="form-control"  placeholder="Telefono Contacto" required>
-            </div>
-
-            <div class="form-group">
-                 <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
-            </div>
-
-            <div class="form-group" style="float: right">
-                <div class="btn-group btn-group-justified">
-                    <button type="button" class="btn btn-danger cancel" onclick="login.html">Cancelar
-                </div>        
-                <div class="btn-group btn-group-justified">
-                    <button type="button" class="btn btn-primary" onclick="save()">Enviar</button>  
+            <div class="container">
+                <div class="form-group">
+                    <select id="categoriaId" name="Tipo Reclamo" class="browser-default custom-select">
+                        <option selected>Seleccione Categoría</option>
+                        <option value="Alumbrado y Luminaria">Alumbrado y Luminaria</option>
+                        <option value="Residuos">Resudios</option>
+                        <option value="Transito">Tránsito</option>
+                        <option value="Bacheo">Bacheo</option>
+                    </select>                  
                 </div>
-            </div>
 
+                <div class="form-group">
+                    <input type="text" class="form-control" id="calleId" aria-describedby="emailHelp" placeholder="Ingrese Calle">
+                </div>
+
+                <div class="form-group">
+                     <input type="text" class="form-control" placeholder="Ingrese Entre" id="entre1Id" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                     <input type="text" class="form-control" placeholder="Ingrese Y" id="entre2Id" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                     <input id="alturaId" type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Ingrese Altura">
+                </div>
+
+                <div class="form-group">
+                    <input id="contactoId" type="text" class="form-control"  placeholder="Telefono Contacto" required>
+                </div>
+
+                <div class="form-group">
+                     <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
+                </div>
+                <div class="form-group" style="float: right">
+                    <div class="btn-group btn-group-justified">
+                        <button type="button" class="btn btn-danger cancel" onclick= "location='index.html'">Cancelar </button>
+                    </div>      
+                    <form action="index.html" method="post">  
+                        <div class="btn-group btn-group-justified">
+                            <button type="reset" class="btn btn-primary" onclick="save()">Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>    
         </form>
         </section>
     </div>
