@@ -8,7 +8,6 @@ function save() {
         console.log(errorMessage);
         // ...
     });
-    
     var expresion;
     var calle = document.getElementById('calleId').value;
     var entre1 = document.getElementById('entre1Id').value;
@@ -18,7 +17,7 @@ function save() {
     var id_categoria = categoria.options[categoria.selectedIndex].value;
     var contacto = document.getElementById('contactoId').value;
     var comentario = document.getElementById('comentarioId').value;
-    var clave = document.getElementById("claveId");
+    var clave = document.getElementById("claveId"); 
 
     expresion = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
 
@@ -55,10 +54,9 @@ function save() {
                         nroReclamo: cuenta,
                         estado: 'ingresado'
                     })
-                    
+                    swal("Gracias!", "Su Reclamo nro  " + cuenta + "  ha sido generado", "success");
                 });
-                //fin count 
-                swal("Gracias!", "Su Reclamo ha sido generado", "success");
+                //fin count
             } else {
                 console.log('fallo');
                 swal("Ups! Su Reclamo no fue creado");
