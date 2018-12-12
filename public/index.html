@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- pwa -->
+        <link rel="manifest" href="/manifest.json">
+        <script type="text/javascript" src="js/sw.js"></script>
+        <meta name="theme-color" content="#317EFB"/>
+        <!-- pwa -->
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="css/styleResponsive.css" />
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
@@ -27,6 +33,14 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script language=javascript></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            if('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('/sw.js')
+                .then(function() {
+                      console.log('Service Worker Registered');
+                });
+            }
+          </script>
     </head>
     <!--<body style="background-color:#c1bdba;">-->
     <body>
