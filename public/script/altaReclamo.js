@@ -1,3 +1,4 @@
+
 function save() {
 
     var database = firebase.database();
@@ -17,12 +18,12 @@ function save() {
     var id_categoria = categoria.options[categoria.selectedIndex].value;
     var contacto = document.getElementById('contactoId').value;
     var comentario = document.getElementById('comentarioId').value;
-    var clave = document.getElementById("claveId"); 
-
+    var clave = document.getElementById("claveId");
+    var ubicacion = document.getElementById("ubicacionId");
     expresion = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
 
-    if (calle == "" || entre1 == "" || entre2 == "" || altura == "" || categoria == "" || id_categoria == "" || contacto == "" || comentario == "" ||clave == ""  ) {
-    alert("Todos los campos son obligatorios.");
+    if (calle == "" || entre1 == "" || entre2 == "" || altura == "" || categoria == "" || id_categoria == "" || contacto == "" || comentario == "" || clave == "") {
+        alert("Todos los campos son obligatorios.");
 
     }
     else {
@@ -52,7 +53,8 @@ function save() {
                         comentario: comentario,
                         fechaCreacion: fecha.toLocaleString(),
                         nroReclamo: cuenta,
-                        estado: 'ingresado'
+                        estado: 'ingresado',
+                        ubicacion: ubicacion.innerText
                     })
                     swal("Gracias!", "Su Reclamo nro  " + cuenta + "  ha sido generado", "success");
                 });
@@ -66,59 +68,38 @@ function save() {
             //KeyRec = rtaSaveRecKey.key;
 
         });
-            
-        //clave.hidden = false;
-        //clave.value = KeyRec;
-
-        /*rtaSaveRec.orderByChild("calle").equalTo(calle).on('child_added', function (ss) {
-            var rtaSaveRec = ss.val();
-            rtaSaveRec.key = ss.key;
-            KeyRec = rtaSaveRec.key;        
-        });
-        rtaSaveRec.orderByChild("entre1").equalTo(entre1).on('child_added', function (ss) {
-            var rtaSaveRec = ss.val();
-            rtaSaveRec.key = ss.key;
-            KeyRec = rtaSaveRec.key;        
-        });
-        rtaSaveRec.orderByChild("entre2").equalTo(entre2).on('child_added', function (ss) {
-            var rtaSaveRec = ss.val();
-            rtaSaveRec.key = ss.key;
-            KeyRec = rtaSaveRec.key;        
-        });
-        rtaSaveRec.orderByChild("altura").equalTo(altura).on('child_added', function (ss) {
-            var rtaSaveRec = ss.val();
-            rtaSaveRec.key = ss.key;
-            KeyRec = rtaSaveRec.key;        
-        });
-        rtaSaveRec.orderByChild("asunto").equalTo(id_asunto).on('child_added', function (ss) {
-            var rtaSaveRec = ss.val();
-            rtaSaveRec.key = ss.key;
-            KeyRec = rtaSaveRec.key;        
-        });
-        rtaSaveRec.orderByChild("contacto").equalTo(contacto).on('child_added', function (ss) {
-            var rtaSaveRec = ss.val();
-            rtaSaveRec.key = ss.key;
-            KeyRec = rtaSaveRec.key;        
-        });
-        rtaSaveRec.orderByChild("comentario").equalTo(comentario).on('child_added', function (ss) {
-            var rtaSaveRec = ss.val();
-            rtaSaveRec.key = ss.key;
-            KeyRec = rtaSaveRec.key;        
-        });  
-        alert(database.ref('reclamos').);*/
 
 
-        /*
-        if(KeyPue =  KeyRec)
-        {
-            alert("ok");
-        }
-        else 
-        {
-            alert("NOOOOOO");
-        }
-        */
 
+    }
 }
+
+function getLocation() {
+
+    if (navigator.geolocation) {
+        //navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition);
+
+    } else {
+        console.log("Geo Location not supported by browser");
+    }
 }
-    
+//function that retrieves the position
+function showPosition(position) {
+    var ubicacion = document.getElementById("ubicacionId");
+    var location = {
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude
+    }
+    console.log(location);
+    ubicacion.innerText = location.longitude + ', ' + location.latitude;
+    showInMap(location);
+}
+
+function showInMap(pos) {
+    var latlon = pos.latitude + "," + pos.longitude;
+
+    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +" & zoom=14 & size=400x300 & sensor=false & key=AIzaSyAYyQgeD0BgzDjx-ROBVkeChta0XVHv2PA";
+    var map = document.getElementById("showMapId");
+    map.innerHTML = "<img src='" + img_url + "'>";
+}

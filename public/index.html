@@ -74,8 +74,17 @@
                 </div>
 
                 <div class="form-group">
+                    <button type="button" class="btn btn-outline-light" onclick="getLocation()">Ubicacion</button>
+                   
+                </div>
+                <div class="form-group" hidden>
+                    <label id="ubicacionId" type="text"></label>
+                </div>
+                <div id="showMapId"></div>
+                <div class="form-group">
                      <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
                 </div>
+                
                 <div class="form-group" style="float: right">
                     <div class="btn-group btn-group-justified">
                         <button type="button" class="btn btn-danger cancel" onclick= "location='index.html'">Cancelar </button>
