@@ -58,7 +58,7 @@ function save() {
                 });
                 //fin count
             } else {
-                console.log('fallo');
+                //console.log('fallo');
                 swal("Ups! Su Reclamo no fue creado");
                 // User is signed out.
                 // ...

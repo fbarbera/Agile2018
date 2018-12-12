@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <!-- pwa -->
-     <link rel="manifest" href="/manifest.json">
-     <script type="text/javascript" src="js/sw.js"></script>
-     <meta name="theme-color" content="#317EFB"/>
-     <!-- pwa -->
+        <!-- pwa -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#317EFB"/>
+        <script>
+            if('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('/sw.js')
+                .then(function() {
+                      console.log('Service Worker Registered');
+                });
+            }
+          </script>
+        <!-- pwa -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/styleResponsive.css" />

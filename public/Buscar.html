@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-       <!-- pwa -->
-       <link rel="manifest" href="/manifest.json">
-       <script type="text/javascript" src="js/sw.js"></script>
-       <meta name="theme-color" content="#317EFB"/>
-       <!-- pwa -->
+        <!-- pwa -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#317EFB"/>
+        <script>
+            if('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('/sw.js')
+                .then(function() {
+                      console.log('Service Worker Registered');
+                });
+            }
+          </script>
+        <!-- pwa -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/styleResponsive.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
@@ -32,6 +39,7 @@
     <script defer src="script/misReclamos.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script language=javascript></script>
+
 </head>
 <!--<body style="background-color:#c1bdba;">
     <div class="container" style="background-color: #c1bdba">
@@ -45,11 +53,11 @@
                 <div id="app">
                     <nav class="nav nav-pills form-row text-center mb-3">
                         <a class="nav-item nav-link col" href="index.html">Generar Reclamo</a>
-                        <a class="nav-item nav-link col active" href="#">Mis Reclamos</a>
-                        <a class="nav-item nav-link col" href="login.html">Cerrar Sesión</a>
+                        <a class="nav-item nav-link col active" href="Buscar.html">Mis Reclamos</a>
+                        <a class="nav-item nav-link col" href="Login.html">Cerrar Sesión</a>
                     </nav>                    
                     <div class="form-group">
-                        <select id="reclamosId" v-model="selected" name="mis Reclamos" class="browser-default custom-select" style="width:100%; font-size:inherit">
+                        <select id="reclamosId" v-model="selected" name="reclamosId" class="browser-default custom-select" style="width:100%; font-size:inherit">
                         <option selected disabled>Seleccione un Reclamo</option>
                         </select>
                     </div>
