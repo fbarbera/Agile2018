@@ -98,7 +98,10 @@
                 <div class="form-group">
                      <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
                 </div>
-                
+                <div class="form-group">
+                    <p><button class="btn btn-outline-light" onclick="takePhoto()">Adjuntar Imagen</button></p>
+                    <p id="photoId" hidden><img id="imageTag" width="240" height="180"></p>
+                </div>
                 <div class="form-group" style="float: right">
                     <div class="btn-group btn-group-justified">
                         <button type="button" class="btn btn-danger cancel" onclick= "location='index.html'">Cancelar </button>
@@ -110,6 +113,7 @@
                         </div>
                     </form>
                 </div>
+
             </div>    
         </form>
         </section>

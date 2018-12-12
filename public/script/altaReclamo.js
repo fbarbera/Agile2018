@@ -103,3 +103,26 @@ function showInMap(pos) {
     var map = document.getElementById("showMapId");
     map.innerHTML = "<img src='" + img_url + "'>";
 }
+
+function takePhoto() {
+    if (!('ImageCapture' in window)) {
+      alert('ImageCapture is not available');
+      return;
+    }
+    
+    if (!btn-outline-light) {
+      alert('Grab the video stream first!');
+      return;
+    }
+    
+    var theImageCapturer = new ImageCapture(theStream.getVideoTracks()[0]);
+  
+    theImageCapturer.takePhoto()
+      .then(blob => {
+        var theImageTag = document.getElementById("imageTag");
+        var photo = document.getElementById("photoId");
+        theImageTag.src = URL.createObjectURL(blob);
+        photo.hidden=false;
+      })
+      .catch(err => alert('Error: ' + err));
+  }
