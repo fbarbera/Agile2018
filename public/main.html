@@ -1,74 +1,115 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+    <head>
         <!-- pwa -->
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#317EFB"/>
-        <script>
-            if('serviceWorker' in navigator) {
-              navigator.serviceWorker.register('/sw.js')
-                .then(function() {
-                      console.log('Service Worker Registered');
-                });
-            }
-          </script>
         <!-- pwa -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Plata Reclama</title>
-    <script type="text/javascript" src="script/altaReclamo.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="stylesheet" media="screen and (max-width: 350px)" type="stylesheet" href="css/styleResponsive.css" />
-    <link rel="stylesheet" type="stylesheet" href="css\form-validation.css" />
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.5.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.5.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-</head>
 
-<body>
-    <div id="envelope">
-        <div class="wrapper">
-            <h1>La Plata Reclama</h1>
-            <p>Seleccione el tipo</p>
-            <div class="tab blue">
-                <input id="tab-four" type="radio" name="tabs2">
-                <label for="tab-four">Luminaria</label>
-                <div class="tab-content">
-                    <a class="elemento">Falta de Luminaria</a>
-                    <a class="elemento">Luminaria Rota</a>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="css/styleResponsive.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-grid.min.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-reboot.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/login.css" />
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.min.js">
+        </script>
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.bundle.js" >       </script>
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.js" ></script>
+        <script rel="stylesheet" type="text/css" href="bootstrap/js/bootstrap.min.js"> </script>
+        <script type="text/javascript" src="js/jQuery.min.js">  </script>
+        <script type="text/javascript" src="js/js.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-database.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-messaging.js"></script>
+        <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
+        <script defer src="/__/firebase/init.js"></script>
+        <script type="text/javascript" src="script/altaReclamo.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script language=javascript></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ 
+    </head>
+    <!--<body style="background-color:#c1bdba;">-->
+    <body>
+    <!--<div class="container"style="background-color: #c1bdba">
+      <section style="background-color: rgba(19, 35, 47, 0.9)" class="widget widget_blog_subscription option-b">-->
+    <div class="container widget widget_blog_subscription option-b" style="background-color: rgba(19, 35, 47, 0.9)">
+        <form >
+             <h3 style="text-align:center; color:white">Generar reclamo</h3>
+             <hr style="color:white" />
+
+            <nav class="nav nav-pills form-row text-center mb-3">
+                <a class="nav-item nav-link col active" href="/main.html">Generar Reclamo</a>
+                <a class="nav-item nav-link col" href="/Buscar.html">Mis Reclamos</a>
+                <a class="nav-item nav-link col" href="/index.html">Cerrar Sesión</a>
+            </nav>
+            <div class="container">
+                <div class="form-group">
+                    <select id="categoriaId" name="Tipo Reclamo" class="browser-default custom-select">
+                        <option selected>Seleccione Categoría</option>
+                        <option value="Alumbrado y Luminaria">Alumbrado y Luminaria</option>
+                        <option value="Residuos">Resudios</option>
+                        <option value="Transito">Tránsito</option>
+                        <option value="Bacheo">Bacheo</option>
+                    </select>                  
                 </div>
-            </div>
-            <div class="tab blue">
-                <input id="tab-five" type="radio" name="tabs2">
-                <label for="tab-five">Label Two</label>
-                <div class="tab-content">
-                        <a class="elemento">Alta de Luminaria</a>
-                        <a class="elemento">Luminaria Rota</a>
-                        <a class="elemento">Falta de Luminaria</a>
-                        <a class="elemento">Luminaria Rota</a>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" id="calleId" aria-describedby="emailHelp" placeholder="Ingrese Calle">
                 </div>
-            </div>
-            <div class="tab blue">
-                <input id="tab-six" type="radio" name="tabs2">
-                <label for="tab-six">Label Three</label>
-                <div class="tab-content">
-                        <a class="elemento">Falta de Luminaria</a>
-                        <a class="elemento">Luminaria Rota</a>
-                        <a class="elemento">Falta de Luminaria</a>
-                        <a class="elemento">Luminaria Rota</a>
-                        <a class="elemento">Falta de Luminaria</a>
-                        <a class="elemento">Luminaria Rota</a>
+
+                <div class="form-group">
+                     <input type="text" class="form-control" placeholder="Ingrese Entre" id="entre1Id" aria-describedby="emailHelp">
                 </div>
-            </div>
-        </div>
+
+                <div class="form-group">
+                     <input type="text" class="form-control" placeholder="Ingrese Y" id="entre2Id" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                     <input id="alturaId" type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Ingrese Altura">
+                </div>
+
+                <div class="form-group">
+                    <input id="contactoId" type="text" class="form-control"  placeholder="Telefono Contacto" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-outline-light" onclick="getLocation()">Ubicacion</button>
+                   
+                </div>
+                <div class="form-group" hidden>
+                    <label id="ubicacionId" type="text"></label>
+                </div>
+                <div id="showMapId"></div>
+                <div class="form-group">
+                     <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
+                </div>
+                <div class="form-group">
+                    <p><button class="btn btn-outline-light" onclick="takePhoto()">Adjuntar Imagen</button></p>
+                    <p id="photoId" hidden><img id="imageTag" width="240" height="180"></p>
+                </div>
+                <div class="form-group" style="float: right">
+                    <div class="btn-group btn-group-justified">
+                        <button type="button" class="btn btn-danger cancel" onclick= "location='main.html'">Cancelar </button>
+                    </div>      
+                    <form action="main.html" method="post">  
+                        <div class="btn-group btn-group-justified">
+                            <button type="reset" class="btn btn-primary" onclick="save()">Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>    
+        </form>
+        </section>
     </div>
-</body>
-
+    </body>
 </html>
+
