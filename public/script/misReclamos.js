@@ -32,7 +32,8 @@ function obtenerReclamos() {
         reclamosArray.splice(0, reclamosArray.length, {
           categoria: reclamosCol.categoria,
           nroReclamo: reclamosCol.nroReclamo,
-          estado: reclamosCol.estado
+          estado: reclamosCol.estado,
+          ubicacion: reclamosCol.ubicacion
         });
         KeyRec = reclamosCol.key;
         for (i in reclamosArray) {
@@ -74,5 +75,13 @@ detalleId.hidden=false;
 nroReclamoInput.value=reclamo.value;
 estadoShow.value=reclamo.selectedOptions[0].innerText.split('Estado:',2)[1].split('-',2)[0];
 categoriaShow.value=reclamo.selectedOptions[0].innerText.split('Categoria:',2)[1];;
- 
+showInMap(reclamo); 
+}
+
+function showInMap(pos) {
+  var latlon = pos.latitude + "," + pos.longitude;
+
+  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBe4fc4rSJXLrlrGIkc5oiwEClhHKCjinY";
+  var map = document.getElementById("mapLocId");
+  map.innerHTML = "<img src='" + img_url + "'>";
 }

@@ -99,7 +99,7 @@ function showPosition(position) {
 function showInMap(pos) {
     var latlon = pos.latitude + "," + pos.longitude;
 
-    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +" & zoom=14 & size=400x300 & sensor=false & key=AIzaSyAYyQgeD0BgzDjx-ROBVkeChta0XVHv2PA";
+    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBe4fc4rSJXLrlrGIkc5oiwEClhHKCjinY";
     var map = document.getElementById("showMapId");
     map.innerHTML = "<img src='" + img_url + "'>";
 }
