@@ -20,13 +20,13 @@ function save() {
     var comentario = document.getElementById('comentarioId').value;
     var clave = document.getElementById("claveId");
     var ubicacion = document.getElementById("ubicacionId");
-    expresion = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
+    //expresion = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
 
-    if (calle == "" || entre1 == "" || entre2 == "" || altura == "" || categoria == "" || id_categoria == "" || contacto == "" || comentario == "" || clave == "") {
-        alert("Todos los campos son obligatorios.");
+    //if (calle == "" || entre1 == "" || entre2 == "" || altura == "" || categoria == "" || id_categoria == "" || contacto == "" || comentario == "" || clave == "") {
+      //  alert("Todos los campos son obligatorios.");
 
-    }
-    else {
+   // }
+   // else {
         var KeyRec;
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
@@ -71,7 +71,7 @@ function save() {
 
 
 
-    }
+   // }
 }
 
 function getLocation() {
