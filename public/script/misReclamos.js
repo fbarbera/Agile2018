@@ -29,7 +29,7 @@ function obtenerReclamos() {
       reclamosCol.orderByChild("userId").equalTo(userId).on('child_added', function (ss) {
         var reclamosCol = ss.val();
         reclamosCol.key = ss.key;        
-        reclamosArray.splice(0, reclamosArray.length, {
+        reclamosArray.push({
           categoria: reclamosCol.categoria,
           nroReclamo: reclamosCol.nroReclamo,
           estado: reclamosCol.estado,
@@ -80,11 +80,11 @@ var reclamoPos = reclamosArray[reclamo.selectedOptions[0].index]
 showInMap(reclamoPos); 
 }
 
-function showInMap(pos) {
+function showInMap(reclamoPos) {
 
-  var latlon = pos.ubicacion;
+  var latlon = reclamoPos.ubicacion;
 
-  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBe4fc4rSJXLrlrGIkc5oiwEClhHKCjinY";
+  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBbeJrzzxE5gVbldlvB5sdrBSZE6VcNLTo";
   var map = document.getElementById("mapLocId");
   map.innerHTML = "<img src='" + img_url + "'>";
 }
