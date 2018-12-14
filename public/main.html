@@ -98,9 +98,11 @@
                 <div class="form-group">
                      <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
                 </div>
+                
                 <div class="form-group">
-                    <p><button class="btn btn-outline-light" onclick="takePhoto()">Adjuntar Imagen</button></p>
-                    <p id="photoId" hidden><img id="imageTag" width="240" height="180"></p>
+
+                        <input class="btn btn-outline-light" accept="image/*"  type="file"  id="fichero" name="fichero" onclick="takePhoto()">
+
                 </div>
                 <div class="form-group" style="float: right">
                     <div class="btn-group btn-group-justified">
@@ -108,8 +110,7 @@
                     </div>      
                     <form action="main.html" method="post">  
                         <div class="btn-group btn-group-justified">
-                            <button type="reset" class="btn btn-primary" onclick="save()">Enviar
-                            </button>
+                            <button type="reset" class="btn btn-primary" onclick="save()">Enviar </button>
                         </div>
                     </form>
                 </div>

@@ -1,6 +1,7 @@
 
+var uploadTask;
+var imagenASubir;
 function save() {
-
     var database = firebase.database();
     firebase.auth().signInAnonymously().catch(function (error) {
         // Handle Errors here.
@@ -20,6 +21,7 @@ function save() {
     var comentario = document.getElementById('comentarioId').value;
     var clave = document.getElementById("claveId");
     var ubicacion = document.getElementById("ubicacionId");
+    var fichero = document.getElementById("fichero");
     //expresion = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
 
     //if (calle == "" || entre1 == "" || entre2 == "" || altura == "" || categoria == "" || id_categoria == "" || contacto == "" || comentario == "" || clave == "") {
@@ -31,6 +33,7 @@ function save() {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 //count de la coleccion
+                guardaStorage(fichero.files);
                 var count = database.ref('reclamos');
                 count.once('value', function (snapshot) {
                     var cuenta = snapshot.numChildren();
@@ -54,7 +57,8 @@ function save() {
                         fechaCreacion: fecha.toLocaleString(),
                         nroReclamo: cuenta,
                         estado: 'ingresado',
-                        ubicacion: ubicacion.innerText
+                        ubicacion: ubicacion.innerText,
+                        imagen: uploadTask.blob_
                     })
                     swal("Gracias!", "Su Reclamo nro  " + cuenta + "  ha sido generado", "success");
                 });
@@ -105,24 +109,24 @@ function showInMap(pos) {
 }
 
 function takePhoto() {
-    if (!('ImageCapture' in window)) {
-      alert('ImageCapture is not available');
-      return;
-    }
-    
-    if (!btn-outline-light) {
-      alert('Grab the video stream first!');
-      return;
-    }
-    
-    var theImageCapturer = new ImageCapture(theStream.getVideoTracks()[0]);
-  
-    theImageCapturer.takePhoto()
-      .then(blob => {
-        var theImageTag = document.getElementById("imageTag");
-        var photo = document.getElementById("photoId");
-        theImageTag.src = URL.createObjectURL(blob);
-        photo.hidden=false;
-      })
-      .catch(err => alert('Error: ' + err));
-  }
+fichero = document.getElementById("fichero");
+ imagenASubir = fichero.files[0];
+
+}
+ function guardaStorage(imagenASubir){
+    var storage = firebase.storage();
+    StorageFoto = storage.ref();
+    uploadTask = StorageFoto.child('StorageFoto/' + imagenASubir[0].name).put(imagenASubir[0]);
+ }
+
+/*
+    // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCWfnhHvT32ZZbYp2OhSnuU6q7IWT9st6c",
+    authDomain: "laplatareclama.firebaseapp.com",
+    databaseURL: "https://laplatareclama.firebaseio.com",
+    projectId: "laplatareclama",
+    storageBucket: "laplatareclama.appspot.com",
+    messagingSenderId: "1024867354320"
+  };
+*/
