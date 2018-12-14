@@ -97,15 +97,23 @@ function showPosition(position) {
     }
     console.log(location);
     ubicacion.innerText = location.longitude + ', ' + location.latitude;
-    showInMap(location);
+    showInMap(ubicacion.innerText);
 }
 
+
 function showInMap(pos) {
-    var latlon = pos.latitude + "," + pos.longitude;
+    /*var latlon = pos.latitude + "," + pos.longitude;
 
     var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBe4fc4rSJXLrlrGIkc5oiwEClhHKCjinY";
     var map = document.getElementById("showMapId");
-    map.innerHTML = "<img src='" + img_url + "'>";
+    map.innerHTML = "<img src='" + img_url + "'>";*/
+    var mapDiv = document.getElementById("mapLocId");
+    var mapProp= {
+      center:new google.maps.LatLng(pos),
+      zoom:5
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    mapDiv.hidden=false;
 }
 
 function takePhoto() {
