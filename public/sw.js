@@ -4,6 +4,16 @@ var urlsToCache = [
   '/index.html',
   '/Buscar.html',
   '/Login.html',
+  '/404.html',
+  'script/altaReclamo.js',
+  'script/login.js',
+  'script/misReclamos.js',
+  'js/js.js',
+  'js/jQuery.min.js',
+  'css/buscar.css',
+  'css/login.css',
+  'css/styleResponsive.css',
+  'css/styles.css',
  
   'https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900',
   'https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i'

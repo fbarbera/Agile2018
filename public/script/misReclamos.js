@@ -2,6 +2,7 @@
 
 var selectReclamos = document.getElementById("reclamosId");
 //selectReclamos.onclick=irAlReclamo(selectReclamos.options[selectReclamos.selectedIndex].value);
+var reclamosArray = [];
 obtenerReclamos();
 
 function obtenerReclamos() {
@@ -27,9 +28,8 @@ function obtenerReclamos() {
       var reclamosCol = database.ref('reclamos');
       reclamosCol.orderByChild("userId").equalTo(userId).on('child_added', function (ss) {
         var reclamosCol = ss.val();
-        reclamosCol.key = ss.key;
-        var reclamosArray = [];
-        reclamosArray.splice(0, reclamosArray.length, {
+        reclamosCol.key = ss.key;        
+        reclamosArray.push({
           categoria: reclamosCol.categoria,
           nroReclamo: reclamosCol.nroReclamo,
           estado: reclamosCol.estado,
@@ -38,6 +38,7 @@ function obtenerReclamos() {
         KeyRec = reclamosCol.key;
         for (i in reclamosArray) {
           var optionRec = document.createElement("option");
+          optionRec.index=i;
           optionRec.value = reclamosArray[i].nroReclamo;
           optionRec.text = 'Reclamo numero: ' + reclamosArray[i].nroReclamo + ' - Estado: ' + reclamosArray[i].estado +' - Categoria: '+ reclamosArray[i].categoria;
           selectReclamos.appendChild(optionRec);
@@ -75,13 +76,15 @@ detalleId.hidden=false;
 nroReclamoInput.value=reclamo.value;
 estadoShow.value=reclamo.selectedOptions[0].innerText.split('Estado:',2)[1].split('-',2)[0];
 categoriaShow.value=reclamo.selectedOptions[0].innerText.split('Categoria:',2)[1];;
-showInMap(reclamo); 
+var reclamoPos = reclamosArray[reclamo.selectedOptions[0].index]
+showInMap(reclamoPos); 
 }
 
-function showInMap(pos) {
-  var latlon = pos.latitude + "," + pos.longitude;
+function showInMap(reclamoPos) {
 
-  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBe4fc4rSJXLrlrGIkc5oiwEClhHKCjinY";
+  var latlon = reclamoPos.ubicacion;
+
+  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBbeJrzzxE5gVbldlvB5sdrBSZE6VcNLTo";
   var map = document.getElementById("mapLocId");
   map.innerHTML = "<img src='" + img_url + "'>";
 }
