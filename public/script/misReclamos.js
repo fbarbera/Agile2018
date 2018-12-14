@@ -88,8 +88,8 @@ function showInMap(reclamoPos) {
   map.innerHTML = "<img src='" + img_url + "'>";*/
   var mapDiv = document.getElementById("mapLocId");
   var mapProp= {
-    center:new google.maps.LatLng(reclamoPos),
-    zoom:5
+    center:{lat: parseFloat(reclamoPos.split(',')[1].trim()), lng: parseFloat(reclamoPos.split(',')[0].trim())},//new google.maps.LatLng(reclamoPos),
+    zoom:8
   };
   var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
   mapDiv.hidden=false;

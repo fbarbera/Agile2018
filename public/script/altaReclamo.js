@@ -97,7 +97,7 @@ function showPosition(position) {
     }
     console.log(location);
     ubicacion.innerText = location.longitude + ', ' + location.latitude;
-    showInMap(ubicacion.innerText);
+    showInMap(location);
 }
 
 
@@ -109,7 +109,7 @@ function showInMap(pos) {
     map.innerHTML = "<img src='" + img_url + "'>";*/
     var mapDiv = document.getElementById("mapLocId");
     var mapProp= {
-      center:new google.maps.LatLng(pos),
+      center:{lat: pos.latitude, lng: pos.longitude},//new google.maps.LatLng(pos),
       zoom:5
     };
     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
