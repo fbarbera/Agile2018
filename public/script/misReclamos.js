@@ -29,7 +29,7 @@ function obtenerReclamos() {
       reclamosCol.orderByChild("userId").equalTo(userId).on('child_added', function (ss) {
         var reclamosCol = ss.val();
         reclamosCol.key = ss.key;        
-        reclamosArray.push({
+        reclamosArray.splice(0, reclamosArray.length,{
           categoria: reclamosCol.categoria,
           nroReclamo: reclamosCol.nroReclamo,
           estado: reclamosCol.estado,
@@ -39,7 +39,7 @@ function obtenerReclamos() {
         for (i in reclamosArray) {
           var optionRec = document.createElement("option");
           optionRec.index=i;
-          optionRec.value = reclamosArray[i].nroReclamo;
+          optionRec.value = reclamosArray[i].ubicacion;
           optionRec.text = 'Reclamo numero: ' + reclamosArray[i].nroReclamo + ' - Estado: ' + reclamosArray[i].estado +' - Categoria: '+ reclamosArray[i].categoria;
           selectReclamos.appendChild(optionRec);
         }
@@ -73,18 +73,17 @@ function buscarReclamo(reclamo) {
   var estadoShow = document.getElementById("estadoId");
   var categoriaShow = document.getElementById("categoriaId");
 detalleId.hidden=false;
-nroReclamoInput.value=reclamo.value;
+nroReclamoInput.value=reclamo.selectedOptions[0].innerText.split('Reclamo numero:',2)[1].split('-',2)[0];
 estadoShow.value=reclamo.selectedOptions[0].innerText.split('Estado:',2)[1].split('-',2)[0];
 categoriaShow.value=reclamo.selectedOptions[0].innerText.split('Categoria:',2)[1];;
-var reclamoPos = reclamosArray[reclamo.selectedOptions[0].index]
-showInMap(reclamoPos); 
+showInMap(reclamo.value); 
 }
 
 function showInMap(reclamoPos) {
 
   var latlon = reclamoPos.ubicacion;
 
-  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBbeJrzzxE5gVbldlvB5sdrBSZE6VcNLTo";
+  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBe4fc4rSJXLrlrGIkc5oiwEClhHKCjinY";
   var map = document.getElementById("mapLocId");
   map.innerHTML = "<img src='" + img_url + "'>";
 }
