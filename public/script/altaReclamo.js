@@ -35,7 +35,7 @@ function save() {
    // else {
         var KeyRec;
         firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
+            try{
                 //count de la coleccion
 
                 if(fichero.value != ""){
@@ -72,7 +72,7 @@ function save() {
                     img = "";
                 });
                 //fin count
-            } else {
+            } catch {
                 //console.log('fallo');
                 swal("Ups! Su Reclamo no fue creado");
                 // User is signed out.
