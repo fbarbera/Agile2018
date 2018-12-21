@@ -87,7 +87,7 @@ function takePhoto() {
      function guardaStorage(imagenASubir){
         var storage = firebase.storage();
         StorageFoto = storage.ref();
-        uploadTask = StorageFoto.child('StorageFoto/' + imagenASubir[0]).put(imagenASubir[0]);
+        uploadTask = StorageFoto.child('StorageFoto/' + imagenASubir[0]).name.put(imagenASubir[0]);
      }
      
 function showPosition(){
