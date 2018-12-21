@@ -86,7 +86,7 @@ function takePhoto() {
      function guardaStorage(imagenASubir){
         var storage = firebase.storage();
         StorageFoto = storage.ref();
-        uploadTask = StorageFoto.child('StorageFoto/' + imagenASubir[0].name).put(imagenASubir[0]);
+        uploadTask = StorageFoto.child('StorageFoto/' + imagenASubir[0]).put(imagenASubir[0]);
      }
      
 function showPosition(){
@@ -104,8 +104,7 @@ function showPosition(){
             latlon = position.coords.latitude + "," +  position.coords.longitude;
 
             var map = L.map('mapLocId').
-            setView( [position.coords.latitude, position.coords.longitude],
-            12);
+            setView( [position.coords.latitude, position.coords.longitude],12);
         
             L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Jortilles',
