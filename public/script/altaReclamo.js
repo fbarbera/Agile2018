@@ -1,6 +1,7 @@
 
 var uploadTask;
 var imagenASubir;
+var img = "";
 
 function save() {
    var database = firebase.database();
@@ -36,7 +37,11 @@ function save() {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 //count de la coleccion
-                guardaStorage(fichero.files);
+
+                if(fichero.value != ""){
+                    guardaStorage(fichero.files);
+                    img = uploadTask.blob_
+                }
                 var count = database.ref('reclamos');
                 count.once('value', function (snapshot) {
                     var cuenta = snapshot.numChildren();
@@ -60,13 +65,11 @@ function save() {
                         fechaCreacion: fecha.toLocaleString(),
                         nroReclamo: cuenta,
                         estado: 'ingresado',
-                        imagen: uploadTask.blob_,
-                        ubicacion: ubicacion.innerText
-                        
+                        ubicacion: ubicacion.innerText,
+                        imagen: img
                     })
                     swal("Gracias!", "Su Reclamo nro  " + cuenta + "  ha sido generado", "success");
-                    document.getElementById("mapLocId").hidden=true;
-                    cache.delete;
+                    img = "";
                 });
                 //fin count
             } else {
@@ -77,8 +80,6 @@ function save() {
             }
             //KeyRec = rtaSaveRecKey.key;
         });
-
-   // }
 }
 
 function takePhoto() {
@@ -128,26 +129,6 @@ function showPosition(){
 }
 
 /*
-function gtmapaa(){
-    
-    //var map = document.getElementById('map').addEventListener('click', mapaa, true);
-    var map = document.getElementById('map').value;
-    var map = L.map('map').
-    setView( [longitude, latitude],
-    12);
-
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Jortilles',
-maxZoom: 18
-}).addTo(map);
-
-L.control.scale().addTo(map);
-
-var marker = L.marker([  41.4780103, 2.3043663 ],{draggable: true}).addTo(map);  
-marker.bindPopup("Hola Mundo!Aqui estan nuestras oficinas").openPopup();
-
-}
-
 var longitude;
 var latitude;
 /*
