@@ -3,7 +3,7 @@ var uploadTask;
 var imagenASubir;
 
 function save() {
-    var database = firebase.database();
+   var database = firebase.database();
     firebase.auth().signInAnonymously().catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -11,6 +11,7 @@ function save() {
         console.log(errorMessage);
         // ...
     });
+
     var expresion;
     var calle = document.getElementById('calleId').value;
     var entre1 = document.getElementById('entre1Id').value;
