@@ -1,6 +1,7 @@
 
 
 var selectReclamos = document.getElementById("reclamosId");
+var ubicacion = document.getElementById("ubicacionId");
 //selectReclamos.onclick=irAlReclamo(selectReclamos.options[selectReclamos.selectedIndex].value);
 var reclamosArray = [];
 obtenerReclamos();
@@ -20,10 +21,6 @@ function obtenerReclamos() {
     var userId = _userId.uid;
     console.log(userId);
     if (userId) {
-      /*firebase.database().ref('/reclamos/' + userId).once('value').then(function (snapshot) {
-        datos = (snapshot.val() && snapshot.val().userId) || userId;
-        alert(datos);
-        });*/
       var keyRec;
       var reclamosCol = database.ref('reclamos');
       reclamosCol.orderByChild("userId").equalTo(userId).on('child_added', function (ss) {
@@ -46,26 +43,14 @@ function obtenerReclamos() {
       });
     } else {
       console.log("error user");
-    }// ...     
-
+    }    
   });
-  //console.log(datos);
 }
-
-/*var app = new Vue({
-  el: '#app',
-  data: {
-      selected: '',
-      options:[]
-  }
-})*/
-
 selectReclamos.addEventListener('change', function () {
   var reclamo = selectReclamos;
   console.log(reclamo);
   buscarReclamo(reclamo);
 })
-
 
 function buscarReclamo(reclamo) {
   var detalleId = document.getElementById("detalle");
@@ -79,19 +64,20 @@ categoriaShow.value=reclamo.selectedOptions[0].innerText.split('Categoria:',2)[1
 showInMap(reclamo.value); 
 }
 
-function showInMap(reclamoPos) {
+function showInMap(reclamoPos){
+  if(navigator.geolocation){
 
-  /*var latlon = reclamoPos.ubicacion;
-
-  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBe4fc4rSJXLrlrGIkc5oiwEClhHKCjinY";
-  var map = document.getElementById("mapLocId");
-  map.innerHTML = "<img src='" + img_url + "'>";*/
-  var mapDiv = document.getElementById("mapLocId");
-  var mapProp= {
-    center:{lat: parseFloat(reclamoPos.split(',')[1].trim()), lng: parseFloat(reclamoPos.split(',')[0].trim())},//new google.maps.LatLng(reclamoPos),
-    zoom:8
-  };
-  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  mapDiv.hidden=false;
+      var map = L.map('mapLocId').
+      setView( [parseFloat(reclamoPos.split(',')[1].trim()), parseFloat(reclamoPos.split(',')[0].trim())],12);
   
+      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Jortilles',
+      maxZoom: 18
+      }).addTo(map);
+      
+      L.control.scale().addTo(map);
+      
+      var marker = L.marker([ parseFloat(reclamoPos.split(',')[1].trim()), parseFloat(reclamoPos.split(',')[0].trim()) ],{draggable: true}).addTo(map);  
+      marker.bindPopup("Usted registro el reclamo aqui").openPopup();
+  } 
 }

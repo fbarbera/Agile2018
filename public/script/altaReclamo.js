@@ -24,6 +24,7 @@ function save() {
     var clave = document.getElementById("claveId");
     var ubicacion = document.getElementById("ubicacionId");
     var fichero = document.getElementById("fichero");
+    
     //expresion = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
 
     //if (calle == "" || entre1 == "" || entre2 == "" || altura == "" || categoria == "" || id_categoria == "" || contacto == "" || comentario == "" || clave == "") {
@@ -90,7 +91,9 @@ function takePhoto() {
      }
      
 function showPosition(){
+    document.getElementById("mapLocId").hidden=false;
     if(navigator.geolocation){
+      
         navigator.geolocation.getCurrentPosition(function(position){
             ubicacion = document.getElementById("ubicacionId");
             var location = {
