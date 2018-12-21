@@ -65,6 +65,8 @@ function save() {
                         
                     })
                     swal("Gracias!", "Su Reclamo nro  " + cuenta + "  ha sido generado", "success");
+                    document.getElementById("mapLocId").hidden=true;
+                    cache.delete;
                 });
                 //fin count
             } else {
@@ -87,7 +89,8 @@ function takePhoto() {
      function guardaStorage(imagenASubir){
         var storage = firebase.storage();
         StorageFoto = storage.ref();
-        uploadTask = StorageFoto.child('StorageFoto/' + imagenASubir[0]).name.put(imagenASubir[0]);
+        namephoto = imagenASubir[0].name;
+        uploadTask = StorageFoto.child('StorageFoto/' + namephoto).put(imagenASubir[0]);
      }
      
 function showPosition(){
