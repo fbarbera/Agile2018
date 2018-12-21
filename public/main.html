@@ -14,6 +14,12 @@
           </script>
         <!-- pwa -->
 
+         <!-- mapa -->
+        <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+        <script type="text/javascript" src="js/leaflet.js"></script>
+         <!-- mapa -->
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="css/styleResponsive.css" />
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
@@ -40,8 +46,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script language=javascript></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW1ofb7gxCJFqrUeC-upPjgcH886pccA4"></script>
- 
+
     </head>
     <!--<body style="background-color:#c1bdba;">-->
     <body>
@@ -88,16 +93,14 @@
                     <input id="contactoId" type="text" class="form-control"  placeholder="Telefono Contacto" required>
                 </div>
 
-                <div class="form-group">
-                    <button type="button" class="btn btn-outline-light" onclick="getLocation()">Ubicacion</button>
-                   
-                </div>
-                <div class="form-group" hidden>
+                <div>
+                    <button type="button" class="btn btn-outline-light" onclick="showPosition()">Ubicacion</button>
+                </div> <br>
+
+                <div id="mapLocId" class="form-group" style="width:100%;height:350px;">
                     <label id="ubicacionId" type="text"></label>
                 </div>
-                <div class="form-group" id="mapLocId" hidden >
-                    <div id="googleMap" style="width:100%;height:400px;"></div>
-                </div>
+            
                 <div class="form-group">
                      <textarea id="comentarioId" class="form-control" rows="5" id="comment" placeholder="Observaciones"></textarea>
                 </div>

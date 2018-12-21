@@ -1,6 +1,7 @@
 
 var uploadTask;
 var imagenASubir;
+
 function save() {
     var database = firebase.database();
     firebase.auth().signInAnonymously().catch(function (error) {
@@ -57,8 +58,9 @@ function save() {
                         fechaCreacion: fecha.toLocaleString(),
                         nroReclamo: cuenta,
                         estado: 'ingresado',
-                        ubicacion: ubicacion.innerText,
-                        imagen: uploadTask.blob_
+                        imagen: uploadTask.blob_,
+                        ubicacion: ubicacion.innerText
+                        
                     })
                     swal("Gracias!", "Su Reclamo nro  " + cuenta + "  ha sido generado", "success");
                 });
@@ -70,71 +72,99 @@ function save() {
                 // ...
             }
             //KeyRec = rtaSaveRecKey.key;
-
         });
-
-
 
    // }
 }
 
+function takePhoto() {
+    fichero = document.getElementById("fichero");
+     imagenASubir = fichero.files[0];
+    
+    }
+     function guardaStorage(imagenASubir){
+        var storage = firebase.storage();
+        StorageFoto = storage.ref();
+        uploadTask = StorageFoto.child('StorageFoto/' + imagenASubir[0].name).put(imagenASubir[0]);
+     }
+     
+function showPosition(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){
+            ubicacion = document.getElementById("ubicacionId");
+            var location = {
+                longitude: position.coords.longitude,
+                latitude: position.coords.latitude
+            }
+            //console.log(location);
+            ubicacion.innerText = location.longitude + ', ' + location.latitude;
+            //showInMap(location);
+        
+            latlon = position.coords.latitude + "," +  position.coords.longitude;
+
+            var map = L.map('mapLocId').
+            setView( [position.coords.latitude, position.coords.longitude],
+            12);
+        
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Jortilles',
+        maxZoom: 18
+        }).addTo(map);
+        
+        L.control.scale().addTo(map);
+        
+        var marker = L.marker([  position.coords.latitude, position.coords.longitude ],{draggable: true}).addTo(map);  
+        marker.bindPopup("Usted registra el reclamo aqui").openPopup();
+        });
+    } else{
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+    }
+}
+
+/*
+function gtmapaa(){
+    
+    //var map = document.getElementById('map').addEventListener('click', mapaa, true);
+    var map = document.getElementById('map').value;
+    var map = L.map('map').
+    setView( [longitude, latitude],
+    12);
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Jortilles',
+maxZoom: 18
+}).addTo(map);
+
+L.control.scale().addTo(map);
+
+var marker = L.marker([  41.4780103, 2.3043663 ],{draggable: true}).addTo(map);  
+marker.bindPopup("Hola Mundo!Aqui estan nuestras oficinas").openPopup();
+
+}
+
+var longitude;
+var latitude;
+/*
 function getLocation() {
 
     if (navigator.geolocation) {
-        //navigator.geolocation.getCurrentPosition(showPosition);
         navigator.geolocation.getCurrentPosition(showPosition);
 
     } else {
         console.log("Geo Location not supported by browser");
     }
 }
+
 //function that retrieves the position
+
 function showPosition(position) {
     var ubicacion = document.getElementById("ubicacionId");
     var location = {
         longitude: position.coords.longitude,
         latitude: position.coords.latitude
     }
-    console.log(location);
+    //console.log(location);
     ubicacion.innerText = location.longitude + ', ' + location.latitude;
     showInMap(location);
 }
-
-
-function showInMap(pos) {
-    /*var latlon = pos.latitude + "," + pos.longitude;
-
-    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+ latlon +"&zoom=14&size=400x300&sensor=false&key=AIzaSyBe4fc4rSJXLrlrGIkc5oiwEClhHKCjinY";
-    var map = document.getElementById("showMapId");
-    map.innerHTML = "<img src='" + img_url + "'>";*/
-    var mapDiv = document.getElementById("mapLocId");
-    var mapProp= {
-      center:{lat: pos.latitude, lng: pos.longitude},//new google.maps.LatLng(pos),
-      zoom:5
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    mapDiv.hidden=false;
-}
-
-function takePhoto() {
-fichero = document.getElementById("fichero");
- imagenASubir = fichero.files[0];
-
-}
- function guardaStorage(imagenASubir){
-    var storage = firebase.storage();
-    StorageFoto = storage.ref();
-    uploadTask = StorageFoto.child('StorageFoto/' + imagenASubir[0].name).put(imagenASubir[0]);
- }
-
-/*
-    // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCWfnhHvT32ZZbYp2OhSnuU6q7IWT9st6c",
-    authDomain: "laplatareclama.firebaseapp.com",
-    databaseURL: "https://laplatareclama.firebaseio.com",
-    projectId: "laplatareclama",
-    storageBucket: "laplatareclama.appspot.com",
-    messagingSenderId: "1024867354320"
-  };
 */
